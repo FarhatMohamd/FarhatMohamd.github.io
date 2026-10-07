@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Mohamad Farhat</title>
+<meta name="description" content="Mohamad Farhat, enseignant en mathématiques appliquées à Arts et Métiers (Châlons-en-Champagne). Modélisation numérique des supraconducteurs, optimisation, apprentissage automatique.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Page personnelle : colonne d'identité fixe à gauche, contenu en une colonne de lecture à droite. */
+:root {
+  --bg: #fbfcfd;
+  --fg: #18222b;
+  --muted: #5b6873;
+  --rule: #dce2e7;
+  --accent: #14586e;
+  --wash: #edf3f5;
+  --serif: "STIX Two Text", "STIX Two", Cambria, Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11181d; --fg: #e2e8ec; --muted: #94a2ad; --rule: #27333c; --accent: #7fc1d4; --wash: #18242b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11181d; --fg: #e2e8ec; --muted: #94a2ad; --rule: #27333c; --accent: #7fc1d4; --wash: #18242b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-inline: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.page {
+  max-width: 1010px;
+  margin-inline: auto;
+  padding-block: 56px 40px;
+  display: grid;
+  grid-template-columns: 215px minmax(0, 1fr);
+  column-gap: 72px;
+}
+
+/* Colonne d'identité */
+.who { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 40px); align-self: start; display: grid; gap: 20px; }
+.who img { width: 118px; height: 155px; object-fit: cover; border-radius: 3px; display: block; }
+.who h1 { font-family: var(--serif); font-weight: 600; font-size: 1.8rem; line-height: 1.15; margin: 0 0 6px; }
+.who .role { color: var(--muted); font-size: .98rem; line-height: 1.45; }
+.who nav ul { display: grid; gap: 5px; font-size: .98rem; }
+.who nav a { text-decoration: none; color: var(--fg); }
+.who nav a:hover { color: var(--accent); text-decoration: underline; }
+.coord { font-size: .92rem; color: var(--muted); line-height: 1.5; display: grid; gap: 6px; }
+.mail { overflow-wrap: anywhere; color: var(--fg); }
+.copy {
+  font: inherit; font-size: .82rem; color: var(--accent); background: none; border: 0; padding: 0;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 2px;
+}
+
+/* Contenu */
+main { min-width: 0; max-width: 660px; }
+section + section { margin-top: 56px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 1.4rem; line-height: 1.25;
+  margin: 0 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+}
+h3 { font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; margin: 0; }
+.prose { display: grid; gap: 14px; }
+.sub { margin-top: 32px; }
+.sub > h3 { color: var(--muted); font-size: .82rem; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 14px; }
+
+/* Travaux en cours */
+.works { display: grid; gap: 20px; }
+.works li { display: grid; gap: 3px; }
+.works .head { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; row-gap: 2px; }
+.state { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+.state::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; border: 1px solid var(--muted); }
+.state.sent::before { background: var(--accent); border-color: var(--accent); }
+.works p, .entry p, .entry li { color: var(--fg); }
+.en { font-style: italic; }
+
+figure { margin: 30px 0 0; padding: 18px 18px 14px; background: var(--wash); border-radius: 3px; }
+figure svg { display: block; width: 100%; max-width: 440px; height: auto; margin-inline: auto; }
+figcaption { font-size: .9rem; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+svg text { font-family: var(--sans); fill: var(--muted); font-size: 11px; }
+svg .ax { stroke: var(--muted); stroke-width: 1; fill: none; }
+svg .grid { stroke: var(--rule); stroke-width: 1; fill: none; }
+svg .c { stroke: var(--accent); fill: none; stroke-linejoin: round; }
+svg .bean { stroke: var(--fg); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+svg .pt { fill: var(--fg); stroke: none; }
+svg .lab { fill: var(--fg); }
+
+/* Publications */
+.pubs { display: grid; gap: 16px; }
+.pubs li { padding-left: 1.1em; text-indent: -1.1em; }
+.pubs cite { font-style: italic; }
+
+/* Entrées datées */
+.entries { display: grid; gap: 24px; }
+.entry { display: grid; grid-template-columns: 9.6rem minmax(0, 1fr); column-gap: 20px; }
+.entry time, .entry .when { color: var(--muted); font-size: .93rem; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.entry .body { display: grid; gap: 6px; min-width: 0; }
+.entry .place { color: var(--muted); }
+.entry ul { display: grid; gap: 6px; margin-top: 4px; }
+.entry ul li { padding-left: 1em; position: relative; }
+.entry ul li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+.entries.tight { gap: 14px; }
+
+.kv { display: grid; grid-template-columns: 9.6rem minmax(0, 1fr); column-gap: 20px; row-gap: 8px; margin: 0; }
+.kv dt { color: var(--muted); font-size: .93rem; padding-top: 2px; }
+.kv dd { margin: 0; }
+
+footer { margin-top: 64px; padding-top: 14px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .86rem; }
+
+@media (max-width: 800px) {
+  .page { grid-template-columns: minmax(0, 1fr); row-gap: 36px; padding-block: 28px 32px; }
+  .who { position: static; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; row-gap: 14px; align-items: start; }
+  .who img { width: 92px; height: 121px; grid-row: span 2; }
+  .who nav { grid-column: 1 / -1; }
+  .who nav ul { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 12px; border-top: 1px solid var(--rule); }
+  .who h1 { font-size: 1.6rem; }
+  section + section { margin-top: 44px; }
+}
+@media (max-width: 520px) {
+  body { font-size: 1rem; }
+  .entry, .kv { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
+  .kv dd { margin-bottom: 8px; }
+  figure { padding: 14px 10px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="who">
+    <img src="data:image/jpeg;base64,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" alt="Portrait de Mohamad Farhat" width="118" height="155">
+    <div>
+      <h1>Mohamad Farhat</h1>
+      <p class="role">Enseignant en mathématiques appliquées<br>Arts et Métiers, campus de Châlons-en-Champagne</p>
+    </div>
+    <div class="coord">
+      <span><span class="mail" id="mail">mohamad.farhat_1@ensam.eu</span> <button class="copy" id="copy-mail" type="button">copier</button></span>
+    </div>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#recherche">Recherche</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#enseignement">Enseignement</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#competences">Compétences</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section id="presentation" class="prose">
+      <p>Je suis enseignant en mathématiques appliquées et en informatique à l’École nationale supérieure d’Arts et Métiers (ENSAM), sur le campus de Châlons-en-Champagne, depuis septembre 2021. J’y enseigne l’analyse numérique, l’optimisation, les probabilités et la statistique, ainsi que l’apprentissage automatique.</p>
+      <p>J’ai soutenu ma thèse en 2019 à l’Université de Lorraine, au laboratoire GREEN, sur la modélisation 3D du champ électromagnétique dans les supraconducteurs à haute température critique. Je continue à travailler sur ces modèles, en particulier pour le calcul des pertes en régime alternatif, et je m’intéresse à ce que l’optimisation et l’apprentissage automatique peuvent leur apporter.</p>
+      <p>Entre la thèse et mon poste actuel, j’ai été ingénieur de recherche à l’Institut Pprime, à Poitiers, où j’ai travaillé sur le transport de solutés dans les milieux fracturés, puis ATER à l’Université de Reims.</p>
+    </section>
+
+    <section id="recherche">
+      <h2>Recherche</h2>
+      <div class="prose">
+        <p>Je travaille sur la modélisation numérique pour le calcul des courants induits et des pertes AC dans les rubans supraconducteurs. Je mène ces travaux dans deux directions&nbsp;: rendre les modèles plus rapides et plus simples à régler grâce à l’optimisation et à l’apprentissage automatique, et mieux comprendre mathématiquement les modèles et les schémas numériques utilisés.</p>
+        <p>Le machine learning fait maintenant pleinement partie de ces travaux&nbsp;: modèles de substitution, initialisation apprise des solveurs itératifs, réseaux de neurones informés par la physique pour les problèmes inverses.</p>
+      </div>
+
+      <div class="sub">
+        <h3>Travaux en cours</h3>
+        <ul class="works">
+          <li>
+            <div class="head"><h3>Réglage automatique du schéma numérique et initialisation apprise</h3><span class="state sent">soumis</span></div>
+            <p>Le schéma temporel repose sur des paramètres de relaxation et de régularisation que l’on règle d’habitude à la main. Je propose de les régler par optimisation bayésienne, et d’utiliser un modèle appris pour fournir un bon point de départ au solveur de Krylov à chaque pas de temps.</p>
+            <p class="en">Automatic Tuning of the Relaxation–Regularisation Scheme and Learned Krylov Initial Guesses for Integro-Differential AC-Loss Modelling of HTS Tapes</p>
+          </li>
+          <li>
+            <div class="head"><h3>Modèle de substitution et optimisation de conception</h3><span class="state sent">soumis</span></div>
+            <p>Construction d’un modèle de substitution des pertes AC, assez rapide pour être placé dans une boucle d’optimisation de conception d’un ruban.</p>
+          </li>
+          <li>
+            <div class="head"><h3>Identification de J<sub>c</sub>(B) à partir de mesures AC</h3><span class="state">en cours</span></div>
+            <p>Que peut-on réellement identifier sur la loi J<sub>c</sub>(B) à partir de mesures en régime alternatif&nbsp;? Étude méthodologique, sur données synthétiques, avec un réseau de neurones informé par la physique (PINN) utilisé en problème inverse, sans supposer à l’avance la forme de la loi.</p>
+          </li>
+          <li>
+            <div class="head"><h3>Schémas de linéarisation pour le problème p-curl</h3><span class="state">en cours</span></div>
+            <p>Étude de schémas de type L-scheme et M-scheme pour le problème p-curl, écrit en champ électrique E.</p>
+          </li>
+          <li>
+            <div class="head"><h3>Pertes de couplage dans les rubans multifilamentaires</h3><span class="state">en cours</span></div>
+            <p>Une règle de somme, issue de la passivité, que doivent vérifier les spectres de pertes de couplage, et son utilisation pour vérifier les modèles. En parallèle, comparaison du recyclage de sous-espaces de Krylov avec l’initialisation apprise.</p>
+          </li>
+        </ul>
+
+        <figure>
+          <svg viewBox="0 0 420 262" role="img" aria-labelledby="fig-t">
+            <title id="fig-t">Loi en puissance E(J) pour n égal à 5, 15 et 40, comparée au modèle de Bean</title>
+            <path class="grid" d="M46 151.3H406M46 82.7H406M46 14H406M166 220V14M286 220V14M406 220V14"/>
+            <path class="ax" d="M46 14V220H406"/>
+            <path class="ax" d="M46 220v4M166 220v4M286 220v4M406 220v4M46 220h-4M46 151.3h-4M46 82.7h-4M46 14h-4"/>
+            <text x="46" y="237" text-anchor="middle">0</text>
+            <text x="166" y="237" text-anchor="middle">0,5</text>
+            <text x="286" y="237" text-anchor="middle">1</text>
+            <text x="406" y="237" text-anchor="middle">1,5</text>
+            <text x="37" y="224" text-anchor="end">0</text>
+            <text x="37" y="155" text-anchor="end">1</text>
+            <text x="37" y="86.5" text-anchor="end">2</text>
+            <text x="37" y="18" text-anchor="end">3</text>
+            <text x="226" y="256" text-anchor="middle">J / J<tspan dy="3" font-size="8.5">c</tspan></text>
+            <text transform="translate(13 117) rotate(-90)" text-anchor="middle">E / E<tspan dy="3" font-size="8.5">c</tspan></text>
+            <path class="c" stroke-width="1.2" stroke-opacity="0.55" d="M46.0 220.0 L47.9 220.0 L49.7 220.0 L51.6 220.0 L53.5 220.0 L55.3 220.0 L57.2 220.0 L59.1 220.0 L60.9 220.0 L62.8 220.0 L64.7 220.0 L66.6 220.0 L68.4 220.0 L70.3 220.0 L72.2 220.0 L74.0 220.0 L75.9 220.0 L77.8 220.0 L79.6 220.0 L81.5 220.0 L83.4 220.0 L85.2 220.0 L87.1 220.0 L89.0 220.0 L90.8 220.0 L92.7 220.0 L94.6 220.0 L96.5 220.0 L98.3 220.0 L100.2 220.0 L102.1 220.0 L103.9 219.9 L105.8 219.9 L107.7 219.9 L109.5 219.9 L111.4 219.9 L113.3 219.9 L115.1 219.9 L117.0 219.8 L118.9 219.8 L120.7 219.8 L122.6 219.8 L124.5 219.7 L126.3 219.7 L128.2 219.7 L130.1 219.6 L132.0 219.6 L133.8 219.5 L135.7 219.5 L137.6 219.4 L139.4 219.4 L141.3 219.3 L143.2 219.3 L145.0 219.2 L146.9 219.1 L148.8 219.0 L150.6 218.9 L152.5 218.8 L154.4 218.7 L156.2 218.6 L158.1 218.5 L160.0 218.3 L161.9 218.2 L163.7 218.1 L165.6 217.9 L167.5 217.7 L169.3 217.5 L171.2 217.3 L173.1 217.1 L174.9 216.9 L176.8 216.7 L178.7 216.5 L180.5 216.2 L182.4 215.9 L184.3 215.6 L186.1 215.3 L188.0 215.0 L189.9 214.7 L191.8 214.3 L193.6 214.0 L195.5 213.6 L197.4 213.1 L199.2 212.7 L201.1 212.3 L203.0 211.8 L204.8 211.3 L206.7 210.8 L208.6 210.2 L210.4 209.6 L212.3 209.0 L214.2 208.4 L216.0 207.7 L217.9 207.1 L219.8 206.3 L221.6 205.6 L223.5 204.8 L225.4 204.0 L227.3 203.1 L229.1 202.2 L231.0 201.3 L232.9 200.4 L234.7 199.4 L236.6 198.3 L238.5 197.2 L240.3 196.1 L242.2 194.9 L244.1 193.7 L245.9 192.4 L247.8 191.1 L249.7 189.8 L251.5 188.4 L253.4 186.9 L255.3 185.4 L257.2 183.8 L259.0 182.2 L260.9 180.5 L262.8 178.7 L264.6 176.9 L266.5 175.1 L268.4 173.1 L270.2 171.1 L272.1 169.0 L274.0 166.9 L275.8 164.7 L277.7 162.4 L279.6 160.0 L281.4 157.6 L283.3 155.1 L285.2 152.5 L287.0 149.8 L288.9 147.1 L290.8 144.2 L292.7 141.3 L294.5 138.2 L296.4 135.1 L298.3 131.9 L300.1 128.6 L302.0 125.2 L303.9 121.7 L305.7 118.1 L307.6 114.3 L309.5 110.5 L311.3 106.6 L313.2 102.5 L315.1 98.4 L316.9 94.1 L318.8 89.7 L320.7 85.1 L322.6 80.5 L324.4 75.7 L326.3 70.8 L328.2 65.8 L330.0 60.6 L331.9 55.3 L333.8 49.8 L335.6 44.2 L337.5 38.5 L339.4 32.6 L341.2 26.6 L343.1 20.4 L345.0 14.0"/>
+            <path class="c" stroke-width="1.7" stroke-opacity="0.8" d="M46.0 220.0 L47.6 220.0 L49.2 220.0 L50.8 220.0 L52.5 220.0 L54.1 220.0 L55.7 220.0 L57.3 220.0 L58.9 220.0 L60.5 220.0 L62.1 220.0 L63.8 220.0 L65.4 220.0 L67.0 220.0 L68.6 220.0 L70.2 220.0 L71.8 220.0 L73.4 220.0 L75.1 220.0 L76.7 220.0 L78.3 220.0 L79.9 220.0 L81.5 220.0 L83.1 220.0 L84.7 220.0 L86.3 220.0 L88.0 220.0 L89.6 220.0 L91.2 220.0 L92.8 220.0 L94.4 220.0 L96.0 220.0 L97.6 220.0 L99.3 220.0 L100.9 220.0 L102.5 220.0 L104.1 220.0 L105.7 220.0 L107.3 220.0 L108.9 220.0 L110.6 220.0 L112.2 220.0 L113.8 220.0 L115.4 220.0 L117.0 220.0 L118.6 220.0 L120.2 220.0 L121.9 220.0 L123.5 220.0 L125.1 220.0 L126.7 220.0 L128.3 220.0 L129.9 220.0 L131.5 220.0 L133.2 220.0 L134.8 220.0 L136.4 220.0 L138.0 220.0 L139.6 220.0 L141.2 220.0 L142.8 220.0 L144.5 220.0 L146.1 220.0 L147.7 220.0 L149.3 220.0 L150.9 220.0 L152.5 220.0 L154.1 220.0 L155.8 220.0 L157.4 220.0 L159.0 220.0 L160.6 220.0 L162.2 220.0 L163.8 220.0 L165.4 220.0 L167.0 220.0 L168.7 220.0 L170.3 220.0 L171.9 220.0 L173.5 220.0 L175.1 220.0 L176.7 220.0 L178.3 220.0 L180.0 220.0 L181.6 220.0 L183.2 220.0 L184.8 220.0 L186.4 220.0 L188.0 220.0 L189.6 220.0 L191.3 220.0 L192.9 220.0 L194.5 219.9 L196.1 219.9 L197.7 219.9 L199.3 219.9 L200.9 219.9 L202.6 219.9 L204.2 219.9 L205.8 219.8 L207.4 219.8 L209.0 219.8 L210.6 219.8 L212.2 219.7 L213.9 219.7 L215.5 219.6 L217.1 219.6 L218.7 219.5 L220.3 219.4 L221.9 219.3 L223.5 219.3 L225.2 219.1 L226.8 219.0 L228.4 218.9 L230.0 218.7 L231.6 218.5 L233.2 218.3 L234.8 218.1 L236.5 217.9 L238.1 217.6 L239.7 217.2 L241.3 216.9 L242.9 216.5 L244.5 216.0 L246.1 215.5 L247.7 214.9 L249.4 214.3 L251.0 213.6 L252.6 212.8 L254.2 211.9 L255.8 210.9 L257.4 209.7 L259.0 208.5 L260.7 207.1 L262.3 205.6 L263.9 203.9 L265.5 202.0 L267.1 199.9 L268.7 197.6 L270.3 195.0 L272.0 192.2 L273.6 189.1 L275.2 185.6 L276.8 181.8 L278.4 177.6 L280.0 172.9 L281.6 167.8 L283.3 162.2 L284.9 156.0 L286.5 149.2 L288.1 141.8 L289.7 133.6 L291.3 124.6 L292.9 114.7 L294.6 103.9 L296.2 92.0 L297.8 79.1 L299.4 64.9 L301.0 49.4 L302.6 32.5 L304.2 14.0"/>
+            <path class="c" stroke-width="2.3" stroke-opacity="1" d="M46.0 220.0 L47.5 220.0 L49.1 220.0 L50.6 220.0 L52.2 220.0 L53.7 220.0 L55.3 220.0 L56.8 220.0 L58.3 220.0 L59.9 220.0 L61.4 220.0 L63.0 220.0 L64.5 220.0 L66.0 220.0 L67.6 220.0 L69.1 220.0 L70.7 220.0 L72.2 220.0 L73.8 220.0 L75.3 220.0 L76.8 220.0 L78.4 220.0 L79.9 220.0 L81.5 220.0 L83.0 220.0 L84.5 220.0 L86.1 220.0 L87.6 220.0 L89.2 220.0 L90.7 220.0 L92.3 220.0 L93.8 220.0 L95.3 220.0 L96.9 220.0 L98.4 220.0 L100.0 220.0 L101.5 220.0 L103.0 220.0 L104.6 220.0 L106.1 220.0 L107.7 220.0 L109.2 220.0 L110.8 220.0 L112.3 220.0 L113.8 220.0 L115.4 220.0 L116.9 220.0 L118.5 220.0 L120.0 220.0 L121.5 220.0 L123.1 220.0 L124.6 220.0 L126.2 220.0 L127.7 220.0 L129.3 220.0 L130.8 220.0 L132.3 220.0 L133.9 220.0 L135.4 220.0 L137.0 220.0 L138.5 220.0 L140.0 220.0 L141.6 220.0 L143.1 220.0 L144.7 220.0 L146.2 220.0 L147.8 220.0 L149.3 220.0 L150.8 220.0 L152.4 220.0 L153.9 220.0 L155.5 220.0 L157.0 220.0 L158.5 220.0 L160.1 220.0 L161.6 220.0 L163.2 220.0 L164.7 220.0 L166.3 220.0 L167.8 220.0 L169.3 220.0 L170.9 220.0 L172.4 220.0 L174.0 220.0 L175.5 220.0 L177.1 220.0 L178.6 220.0 L180.1 220.0 L181.7 220.0 L183.2 220.0 L184.8 220.0 L186.3 220.0 L187.8 220.0 L189.4 220.0 L190.9 220.0 L192.5 220.0 L194.0 220.0 L195.6 220.0 L197.1 220.0 L198.6 220.0 L200.2 220.0 L201.7 220.0 L203.3 220.0 L204.8 220.0 L206.3 220.0 L207.9 220.0 L209.4 220.0 L211.0 220.0 L212.5 220.0 L214.1 220.0 L215.6 220.0 L217.1 220.0 L218.7 220.0 L220.2 220.0 L221.8 220.0 L223.3 220.0 L224.8 220.0 L226.4 220.0 L227.9 220.0 L229.5 220.0 L231.0 220.0 L232.6 220.0 L234.1 220.0 L235.6 220.0 L237.2 220.0 L238.7 220.0 L240.3 220.0 L241.8 220.0 L243.3 220.0 L244.9 220.0 L246.4 219.9 L248.0 219.9 L249.5 219.9 L251.1 219.9 L252.6 219.8 L254.1 219.8 L255.7 219.7 L257.2 219.6 L258.8 219.4 L260.3 219.3 L261.8 219.0 L263.4 218.7 L264.9 218.3 L266.5 217.7 L268.0 217.0 L269.6 216.0 L271.1 214.7 L272.6 213.1 L274.2 210.9 L275.7 208.1 L277.3 204.4 L278.8 199.7 L280.3 193.5 L281.9 185.6 L283.4 175.3 L285.0 162.1 L286.5 145.2 L288.1 123.4 L289.6 95.4 L291.1 59.7 L292.7 14.0"/>
+            <path class="bean" d="M46 220H286V14"/>
+            <circle class="pt" cx="286" cy="151.3" r="2.6"/>
+            <text class="lab" x="294" y="168">(J<tspan dy="3" font-size="8.5">c</tspan><tspan dy="-3">, E</tspan><tspan dy="3" font-size="8.5">c</tspan><tspan dy="-3">)</tspan></text>
+            <g>
+              <path class="c" stroke-width="1.2" stroke-opacity=".55" d="M62 34h26"/><text class="lab" x="96" y="38">n = 5</text>
+              <path class="c" stroke-width="1.7" stroke-opacity=".8" d="M62 52h26"/><text class="lab" x="96" y="56">n = 15</text>
+              <path class="c" stroke-width="2.3" d="M62 70h26"/><text class="lab" x="96" y="74">n = 40</text>
+              <path class="bean" d="M62 88h26"/><text class="lab" x="96" y="92">Bean (n → ∞)</text>
+            </g>
+          </svg>
+          <figcaption>La loi en puissance E&nbsp;=&nbsp;E<sub>c</sub>&nbsp;(J/J<sub>c</sub>)<sup>n</sup>, utilisée pour décrire les supraconducteurs à haute température critique. Quand l’exposant n augmente, la courbe se rapproche du modèle de l’état critique de Bean.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <h3>Thèse</h3>
+        <p><cite class="en">Contribution à la modélisation 3D du champ électromagnétique dans les supraconducteurs à haute température critique</cite>. Thèse de doctorat, Université de Lorraine, laboratoire GREEN, 2019. <a href="https://hal.univ-lorraine.fr/tel-02351551">Manuscrit sur HAL</a></p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="sub" style="margin-top:0">
+      <h3>Articles de revue</h3>
+      <ul class="pubs">
+        <li>A. Beaudoin, <strong>M. Farhat</strong>. Impact of the fracture contact area on macro-dispersion in single rough fractures. <cite>Comptes Rendus. Mécanique</cite>, vol.&nbsp;349, n°&nbsp;2, p.&nbsp;203-224, 2021. <a href="https://doi.org/10.5802/crmeca.82">doi:10.5802/crmeca.82</a></li>
+        <li>H. Menana, <strong>M. Farhat</strong>, M. Hinaje, B. Douine. An Integro-Differential Time-Domain Scheme for Electromagnetic Field Modeling in HTS Materials. <cite>IEEE Transactions on Magnetics</cite>, vol.&nbsp;56, n°&nbsp;3, 2020. <a href="https://ieeexplore.ieee.org/document/8954942/">IEEE Xplore</a></li>
+        <li>H. Menana, <strong>M. Farhat</strong>, M. Hinaje, K. Berger, B. Douine, J. Lévêque. Eddy current modeling in linear and nonlinear multifilamentary composite materials. <cite>Open Physics</cite>, vol.&nbsp;16, n°&nbsp;1, p.&nbsp;183-187, 2018. <a href="https://doi.org/10.1515/phys-2018-0026">doi:10.1515/phys-2018-0026</a></li>
+      </ul>
+      </div>
+      <div class="sub">
+      <h3>Communications en conférence</h3>
+      <ul class="pubs">
+        <li>H. Menana, <strong>M. Farhat</strong>, M. Hinaje. Integrodifferential modelling of the electromagnetic field in HTS bulks. <cite>23rd Conference on the Computation of Electromagnetic Fields (COMPUMAG 2021)</cite>, Cancún, Mexique, janvier 2022. <a href="https://hal.science/hal-03537562">hal-03537562</a></li>
+        <li><strong>M. Farhat</strong>, H. Menana, M. Hinaje, B. Douine. Modélisation du champ électromagnétique dans les rubans supraconducteurs HTC dans le domaine fréquentiel. <cite>12<sup>es</sup> Journées de Cryogénie et de Supraconductivité</cite>, Aussois, France, juin 2018. <a href="https://hal.science/hal-03213996">hal-03213996</a></li>
+      </ul>
+      </div>
+    </section>
+
+    <section id="enseignement">
+      <h2>Enseignement</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="when">depuis sept. 2021</div>
+          <div class="body">
+            <h3>Arts et Métiers (ENSAM), Châlons-en-Champagne</h3>
+            <p class="place">Enseignant en mathématiques appliquées et informatique</p>
+            <ul>
+              <li><strong>Mathématiques de l’ingénieur, analyse numérique, optimisation et programmation</strong> (environ 1&nbsp;120&nbsp;h). Calcul formel, intégration numérique, résolution de systèmes linéaires et non linéaires, équations différentielles, courbes et surfaces, approximation. Optimisation linéaire, non linéaire et multi-objectif. Programmation orientée objet à travers la réalisation de jeux vidéo.</li>
+              <li><strong>Statistique, probabilités, intelligence artificielle et machine learning</strong> (environ 390&nbsp;h). Sensibilisation à l’IA et au big data, puis toute la chaîne de traitement des données en Python&nbsp;: nettoyage, visualisation, classification, prédiction, évaluation des modèles. Les étudiants manipulent scikit-learn, TensorFlow, pandas, NumPy et seaborn, sur des méthodes comme les k-moyennes, les k plus proches voisins, les arbres de décision, la régression logistique, les SVM, l’ACP et les réseaux convolutifs.</li>
+              <li><strong>Projets encadrés.</strong> Système de pointage par reconnaissance faciale. Détection d’objets en temps réel, où j’étais responsable de la partie vision par ordinateur. Navigation d’un robot à partir d’une capture à 360°&nbsp;: acquisition, prétraitement et filtrage des données, cartographie et visualisation.</li>
+              <li>Membre des jurys de recrutement et de validation, auditions des candidats des futures promotions.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="when">2026 – 2027</div>
+          <div class="body">
+            <h3>Sciences Po, campus de Reims</h3>
+            <p class="place">Vacataire. Enseignement de mathématiques, en anglais.</p>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="when">déc. 2020 – août 2021</div>
+          <div class="body">
+            <h3>Université de Reims</h3>
+            <p class="place">ATER en mathématiques. Statistique, gestion de données, probabilités, codage et algorithmique.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours">
+      <h2>Parcours</h2>
+      <div class="sub" style="margin-top:0">
+        <h3>Recherche</h3>
+        <div class="entries">
+          <div class="entry">
+            <div class="when">déc. 2019 – nov. 2020</div>
+            <div class="body">
+              <h3>Ingénieur de recherche, Institut Pprime, Université de Poitiers</h3>
+              <p>Impact de l’hétérogénéité des milieux naturels, fracturés ou poreux, sur le transport des solutés inertes. J’ai implémenté et validé des modèles numériques en C++ sous Linux, exécutés en parallèle (MPI) sur supercalculateurs, pour mieux comprendre l’écoulement de l’eau et le transport dans des milieux très fortement hétérogènes.</p>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">oct. 2016 – sept. 2019</div>
+            <div class="body">
+              <h3>Doctorant, laboratoire GREEN, Université de Lorraine, Nancy</h3>
+              <p>Développement d’approches de modélisation multi-échelle rapides pour le dimensionnement et l’optimisation des systèmes à base de supraconducteurs. Algorithmes numériques et d’optimisation développés sous MATLAB.</p>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">févr. – juil. 2015</div>
+            <div class="body">
+              <h3>Stage de recherche de M2, LMBA, Université de Bretagne Sud, Vannes</h3>
+              <p>Calcul explicite de coefficients homogénéisés pour la dynamique de particules chargées sous l’effet d’un champ magnétique fort, avec la simulation d’un faisceau de particules soumis à un champ électrique.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Formation</h3>
+        <div class="entries tight">
+          <div class="entry">
+            <div class="when">2016 – 2019</div>
+            <div class="body"><p>Doctorat en mathématiques et génie électrique, Université de Lorraine, Faculté des sciences et technologies de Nancy</p></div>
+          </div>
+          <div class="entry">
+            <div class="when">2014 – 2015</div>
+            <div class="body"><p>Master 2 Mathématiques et applications des mathématiques, Université de Bretagne Sud, Vannes</p></div>
+          </div>
+          <div class="entry">
+            <div class="when">2009 – 2013</div>
+            <div class="body"><p>Licence et Master 1 de mathématiques fondamentales, Université Libanaise, Faculté des sciences, Tripoli (Liban)</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <dl class="kv">
+        <dt>Domaines</dt>
+        <dd>Analyse numérique, équations aux dérivées partielles, modélisation, optimisation, probabilités et statistique, apprentissage automatique</dd>
+        <dt>ML / DL</dt>
+        <dd>Réseaux de neurones convolutifs (CNN), réseaux informés par la physique (PINN), régression logistique, SVM, arbres de décision, k plus proches voisins, k-moyennes, ACP, optimisation bayésienne. Outils&nbsp;: scikit-learn, TensorFlow, pandas, NumPy.</dd>
+        <dt>Informatique</dt>
+        <dd>Python, MATLAB, C++, LaTeX, Linux et Windows, MegaWave2</dd>
+        <dt>Langues</dt>
+        <dd>Français, anglais, arabe</dd>
+        <dt>À côté</dt>
+        <dd>Football, basket, bowling, photographie, musique</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p>Mohamad Farhat · Arts et Métiers, Châlons-en-Champagne · mise à jour en octobre 2026</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-mail');
+  var mail = document.getElementById('mail');
+  if (!btn || !mail) return;
+  function select() {
+    var r = document.createRange(); r.selectNodeContents(mail);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'copié'; setTimeout(function () { btn.textContent = 'copier'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(mail.textContent).then(done, select);
+    } catch (e) { select(); }
+  });
+})();
+</script>
+</body>
+</html>
